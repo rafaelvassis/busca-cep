@@ -100,6 +100,7 @@ flowchart TB
 ## Responsabilidades do Util
 
 - Validar o CEP informado.
+- Normalizar o CEP (deve conter apenas caracteres numéricos)
 
 ---
 
@@ -119,7 +120,8 @@ busca-cep/
 │   ├── services/
 │   │   └── cepService.js
 │   └── utils/
-│       └── validarCep.js
+│       ├── validarCep.js
+│       └── normalizarCep.js
 │
 ├── index.html
 ├── README.md
