@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Busca CEP</title>
   </head>
   <body>
@@ -18,31 +18,36 @@
           placeholder="Ex: 01001-000"
           required
         />
-        <button type="submit">Buscar Endereço</button>
+        <button type="submit">Buscar</button>
       </form>
 
-      <div id="area-mensagens" aria-live="polite"></div>
+      <div id="area-mensagens" aria-live="polite">mensagem</div>
 
       <section id="resultado-endereco">
+        <h2>Resultado da Consulta</h2>
         <div class="campo-dado">
-            <h2>Resultado da Consulta</h2>
-          <strong>Logradouro:</strong> <span id="logradouro"></span>
+          <p>Logradouro:</p> <span id="logradouro"></span>
         </div>
         <div class="campo-dado">
-          <p>Complemento:</p> <span id="complemento"></span>
+          <p>Complemento:</p>
+          <span id="complemento"></span>
         </div>
         <div class="campo-dado">
-          <p>Bairro:</p> <span id="bairro"></span>
+          <p>Bairro:</p>
+          <span id="bairro"></span>
         </div>
         <div class="campo-dado">
-          <p>Cidade:</p> <span id="cidade"></span>
+          <p>Cidade:</p>
+          <span id="cidade"></span>
         </div>
         <div class="campo-dado">
-            <p>UF:</p> <span id="uf"></span>
+          <p>UF:</p>
+          <span id="uf"></span>
         </div>
         <div class="campo-dado">
-            <p>Estado:</p> <span id="estado"></span>
-            </div>
+          <p>Estado:</p>
+          <span id="estado"></span>
+        </div>
       </section>
 
       <div id="area-acoes">
