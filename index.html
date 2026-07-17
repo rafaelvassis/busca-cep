@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Busca CEP</title>
+  </head>
+  <body>
+    <main class="principal">
+      <h1>Buscar Endereço pelo CEP</h1>
+
+      <form id="form-busca">
+        <label for="cep-input">Digite o CEP:</label>
+        <input
+          type="text"
+          id="cep-input"
+          placeholder="Ex: 01001-000"
+          required
+        />
+        <button type="submit">Buscar Endereço</button>
+      </form>
+
+      <div id="area-mensagens" aria-live="polite"></div>
+
+      <section id="resultado-endereco">
+        <div class="campo-dado">
+            <h2>Resultado da Consulta</h2>
+          <strong>Logradouro:</strong> <span id="logradouro"></span>
+        </div>
+        <div class="campo-dado">
+          <p>Complemento:</p> <span id="complemento"></span>
+        </div>
+        <div class="campo-dado">
+          <p>Bairro:</p> <span id="bairro"></span>
+        </div>
+        <div class="campo-dado">
+          <p>Cidade:</p> <span id="cidade"></span>
+        </div>
+        <div class="campo-dado">
+            <p>UF:</p> <span id="uf"></span>
+        </div>
+        <div class="campo-dado">
+            <p>Estado:</p> <span id="estado"></span>
+            </div>
+      </section>
+
+      <div id="area-acoes">
+        <button id="btn-copiar" type="button">Copiar</button>
+        <button id="btn-limpar" type="button">Limpar</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>Desenvolvido por Rafael Vassis</p>
+    </footer>
+  </body>
+</html>
