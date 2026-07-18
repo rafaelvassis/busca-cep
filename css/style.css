@@ -228,11 +228,19 @@ h2 {
 }
 
 /* RODAPÉ E RESPONSIVIDADE ------------------ */
+footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 footer p {
   font-size: 0.85rem;
   color: var(--cor-texto-suave);
 }
 
+.mascote {
+  width: 50px;
+}
 @media (max-width: 480px) {
   body {
     padding: 1rem;
