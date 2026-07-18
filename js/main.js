@@ -16,7 +16,9 @@ const cidade = document.getElementById("cidade");
 const uf = document.getElementById("uf");
 const estado = document.getElementById("estado");
 
-// Elementos dos botões de cópia e limpeza - Pendente
+// Elementos dos botões de cópia e limpeza
+const btnLimpar = document.getElementById("btn-limpar");
+const btnCopiar = document.getElementById("btn-copiar");
 
 formulario.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -59,6 +61,12 @@ formulario.addEventListener("submit", async (e) => {
     areaMensagens.innerText = "CEP inválido! Por favor, digite um CEP válido";
   }
 });
+
+btnLimpar.addEventListener('click', ()=>{
+  inputCEP.value = "";
+  areaMensagens.innerText = "";
+  limparResultado();
+})
 
 // Criar função para limpeza de campos
 function limparResultado(){
