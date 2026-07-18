@@ -1,58 +1,147 @@
-# Busca CEP
+# 📮 Busca CEP
 
-Aplicação desenvolvida com HTML, CSS e JavaScript puro para consulta de CEPs utilizando uma API pública.
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/docs/Web/JavaScript)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/docs/Web/CSS)
+[![Demo](https://img.shields.io/badge/Demo-Online-success?logo=vercel)](https://busca-cep-woad-sigma.vercel.app/)
 
-> Projeto desenvolvido como parte da construção do meu portfólio e dos estudos de arquitetura de software.
+Aplicação desenvolvida em **HTML, CSS e JavaScript puro** para consulta de endereços brasileiros a partir do CEP, utilizando a API **ViaCEP**.
 
-O objetivo é criar uma aplicação que receba a informação de um CEP, faça a chamada na API e exiba o endereço correspondente na tela. 
-
-## O que estou exercitando?
-
-Estou exercicitando a capacidade de arquitetar o projeto, pensar em fluxos, responsabilidades e quem/ o que delegar.
-
-## Requisitos
-
-### Funcionais
-
-|Código|Requisito|
-|:---:|---|
-|RF01|Exibe CEP, logradouro, complemento, bairro, localidade, UF, Estado em campos separados|
-|RF02|Usuário pode fazer várias consultas, uma por vez!
-|RF03|O sistema exibirá uma mensagem de notificação de erro caso a entrada seja inválida ou o cep seja inexistente|
-|RF04|Deve ter botão que copia o texto completo dos dados do endereço pesquisado para a área de transferência do usuário|
-|RF05|Deve ter botão de limpeza dos dados|
-
-
-### Não Funcionais
-
-|Código|Requisito|
-|:---:|---|
-|RNF01|Sistema será ser responsivo, tanto para mobile quanto para telas maiores|
-|RNF02|Rodar em todos os navegadores modernos|
-|RNF03|O botão pesquisar deve ficar inativo até a resposta da requisição seja concluída, de forma a impedir que o usuário inicie múltiplas consultas simultaneamente|
-|RNF04|O sistema apresentar os dados em estilo formulário cada dado em um campo|
-
-## Responsabilidades
-
-- Recebero CEP informado pelo usuário
-- Validar o CEP informado
-- Consular o serviço de CEP
-- Exibir o endereço encontrado
-- Exibir mensagem de erro ou sucesso
-- Permitr copiar o endereço
-- Permitir limpar a consulta
+O projeto foi desenvolvido com foco na prática de **arquitetura de aplicações frontend**, **separação de responsabilidades**, **organização em módulos** e **consumo de APIs REST**, priorizando uma implementação simples, organizada e de fácil manutenção.
 
 ---
 
-## Fluxo
-```mermaid
-flowchart TB
-    Inicio(Início) --> Load[Usuário Abre a Página]
-    Load --> Input[Informa o CEP]
-    Input --> Valida{Sistema valida\n a entrada}
-    Valida -- Entrada Inválida --> Erro[Exibe Mensagem de erro] --> Input
-    Valida -- Entrada Ok --> API[Chama API]
-    API --> Resposta[Mostra Resposta] --> Fim(Fim)
+## 🌐 Aplicação Online
+
+Acesse o projeto:
+
+**https://busca-cep-woad-sigma.vercel.app/**
+
+---
+
+## 📸 Demonstração
+
+![Demonstração da aplicação](docs/demo.gif)
+
+---
+
+## 🚀 Funcionalidades
+
+- ✅ Consulta de CEP utilizando a API ViaCEP
+- ✅ Validação da entrada do usuário
+- ✅ Normalização automática do CEP informado
+- ✅ Exibição completa do endereço encontrado
+- ✅ Tratamento de CEP inexistente
+- ✅ Tratamento de indisponibilidade da API
+- ✅ Cópia do endereço para a área de transferência
+- ✅ Limpeza da consulta
+- ✅ Interface responsiva
+
+---
+
+## 🧠 Conceitos aplicados
+
+Projeto desenvolvido com foco na prática de fundamentos de arquitetura frontend.
+
+- Levantamento de requisitos
+- Separação de responsabilidades
+- Organização em camadas (`services` e `utils`)
+- Modularização com ES Modules
+- Consumo de APIs REST
+- Programação assíncrona (`async` / `await`)
+- Manipulação do DOM
+- Manipulação de eventos
+- Validação de entrada
+- Normalização de dados
+- Tratamento de erros
+- Organização de projetos JavaScript sem frameworks
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- ViaCEP API
+- Visual Studio Code
+
+---
+
+## 📂 Estrutura do projeto
+
+```text
+busca-cep/
+│
+├── docs/
+│   └── analise.md
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   ├── main.js
+│   ├── services/
+│   │   └── cepService.js
+│   └── utils/
+│       ├── normalizarCep.js
+│       └── validarCep.js
+│
+├── index.html
+├── README.md
+└── .gitignore
 ```
 
 ---
+
+## ▶️ Como executar
+
+### Clonar o repositório
+
+```bash
+git clone https://github.com/rafaelvassis/busca-cep.git
+cd busca-cep
+```
+
+### Executar
+
+Abra o arquivo `index.html` em qualquer navegador moderno.
+
+Ou utilize uma extensão como **Live Server** no Visual Studio Code.
+
+---
+
+## 📚 Aprendizados
+
+Durante o desenvolvimento deste projeto foram praticados:
+
+- Planejamento antes da implementação
+- Levantamento de requisitos funcionais e não funcionais
+- Definição de responsabilidades da aplicação
+- Organização da arquitetura antes da escrita do código
+- Separação entre interface, regras de negócio e serviços
+- Consumo de APIs REST
+- Manipulação do DOM
+- Programação assíncrona
+- Tratamento de erros
+- Organização de projetos JavaScript sem frameworks
+
+---
+
+## 🚀 Possíveis melhorias futuras
+
+- Máscara automática para o campo de CEP
+- Histórico de consultas
+- Compartilhamento do endereço encontrado
+- Testes automatizados
+- Tema claro/escuro
+
+---
+
+<p align="center">
+  <img src="docs/bear_transparent.png" width="100" alt="Bear Logo">
+</p>
+
+<p align="center">
+  <strong>Desenvolvido por Rafael Vassis</strong>
+</p>
