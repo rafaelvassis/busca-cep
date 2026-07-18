@@ -4,6 +4,7 @@ import { validarCEP } from "./utils/validarCep.js";
 // Elementos do formulário
 const formulario = document.getElementById("form-busca");
 const inputCEP = document.getElementById("cep-input");
+const btnBuscar = document.getElementById("btn-buscar");
 
 // Elementos da área de mensagem
 const areaMensagens = document.getElementById("area-mensagens");
@@ -24,41 +25,49 @@ const btnCopiar = document.getElementById("btn-copiar");
 formulario.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  limparEndereco();
+  btnBuscar.disabled = true;
+  btnBuscar.innerText = "Buscando...";
 
-  if (validarCEP(inputCEP.value)) {
-    // Limpa mensagem
-    areaMensagens.innerText = "";
+  try {
+    limparEndereco();
 
-    // Faz a consulta
-    const dadosCEP = await consultarCep(inputCEP.value);
+    if (validarCEP(inputCEP.value)) {
+      // Limpa mensagem
+      areaMensagens.innerText = "";
 
-    // Informa falha na consulta
-    if (!dadosCEP) {
-      areaMensagens.innerText = "Serviço indisponível";
-      return;
+      // Faz a consulta
+      const dadosCEP = await consultarCep(inputCEP.value);
+
+      // Informa falha na consulta
+      if (!dadosCEP) {
+        areaMensagens.innerText = "Serviço indisponível";
+        return;
+      }
+
+      // CEP não localizado
+      if (dadosCEP.erro) {
+        areaMensagens.innerText = "CEP não localizado na base de dados.";
+        return;
+      }
+
+      // Mensagem de sucesso
+      areaMensagens.innerText = "CEP localizado";
+
+      // Exibe o endereço
+      logradouro.innerText = dadosCEP.logradouro;
+      complemento.innerText = dadosCEP.complemento;
+      bairro.innerText = dadosCEP.bairro;
+      cidade.innerText = dadosCEP.localidade;
+      uf.innerText = dadosCEP.uf;
+      estado.innerText = dadosCEP.estado;
+    } else {
+      inputCEP.value = "";
+      inputCEP.focus();
+      areaMensagens.innerText = "CEP inválido! Por favor, digite um CEP válido";
     }
-
-    // CEP não localizado
-    if (dadosCEP.erro) {
-      areaMensagens.innerText = "CEP não localizado na base de dados.";
-      return;
-    }
-
-    // Mensagem de sucesso
-    areaMensagens.innerText = "CEP localizado";
-
-    // Exibe o endereço
-    logradouro.innerText = dadosCEP.logradouro;
-    complemento.innerText = dadosCEP.complemento;
-    bairro.innerText = dadosCEP.bairro;
-    cidade.innerText = dadosCEP.localidade;
-    uf.innerText = dadosCEP.uf;
-    estado.innerText = dadosCEP.estado;
-  } else {
-    inputCEP.value = "";
-    inputCEP.focus();
-    areaMensagens.innerText = "CEP inválido! Por favor, digite um CEP válido";
+  } finally {
+    btnBuscar.disabled = false;
+    btnBuscar.innerText = "Buscar";
   }
 });
 
