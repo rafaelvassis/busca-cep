@@ -20,10 +20,11 @@ const estado = document.getElementById("estado");
 const btnLimpar = document.getElementById("btn-limpar");
 const btnCopiar = document.getElementById("btn-copiar");
 
+// Escuta do envio do formulário
 formulario.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  limparResultado();
+  limparEndereco();
 
   if (validarCEP(inputCEP.value)) {
     // Limpa mensagem
@@ -54,7 +55,6 @@ formulario.addEventListener("submit", async (e) => {
     cidade.innerText = dadosCEP.localidade;
     uf.innerText = dadosCEP.uf;
     estado.innerText = dadosCEP.estado;
-
   } else {
     inputCEP.value = "";
     inputCEP.focus();
@@ -62,21 +62,41 @@ formulario.addEventListener("submit", async (e) => {
   }
 });
 
-btnLimpar.addEventListener('click', ()=>{
-  inputCEP.value = "";
-  areaMensagens.innerText = "";
-  limparResultado();
-})
+// Escuta do clique no botão copiar
+btnCopiar.addEventListener("click", copiarEndereco);
 
-// Criar função para limpeza de campos
-function limparResultado(){
+// Escuta do clique no botão limpar
+btnLimpar.addEventListener("click", limparTela);
+
+function limparEndereco() {
   logradouro.innerText = "";
-    complemento.innerText = "";
-    bairro.innerText = "";
-    cidade.innerText = "";
-    uf.innerText = "";
-    estado.innerText = "";
+  complemento.innerText = "";
+  bairro.innerText = "";
+  cidade.innerText = "";
+  uf.innerText = "";
+  estado.innerText = "";
 }
 
+function limparTela() {
+  inputCEP.value = "";
+  areaMensagens.innerText = "";
+  limparEndereco();
+  inputCEP.focus();
+}
 
-// Criar função para área de transferência
+// Função para área de transferência
+async function copiarEndereco() {
+  if (!logradouro.innerText) {
+    areaMensagens.innerText = "Não há endereço para copiar!";
+    return;
+  }
+  const textoFormatado =
+    `${logradouro.innerText} - ${complemento.innerText}, ${bairro.innerText}. ${cidade.innerText} - ${uf.innerText} (${estado.innerText})`.trim();
+
+  try {
+    await navigator.clipboard.writeText(textoFormatado);
+    areaMensagens.innerText = "Endereço copiado para a área de transferência!";
+  } catch {
+    areaMensagens.innerText = "Erro ao copiar o endereço.";
+  }
+}
