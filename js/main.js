@@ -21,7 +21,7 @@ const estado = document.getElementById("estado");
 formulario.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Inserir aqui limpeza de campos
+  limparResultado();
 
   if (validarCEP(inputCEP.value)) {
     // Limpa mensagem
@@ -52,13 +52,23 @@ formulario.addEventListener("submit", async (e) => {
     cidade.innerText = dadosCEP.localidade;
     uf.innerText = dadosCEP.uf;
     estado.innerText = dadosCEP.estado;
+
   } else {
-    console.log("Entrada inválida");
     inputCEP.value = "";
+    inputCEP.focus();
     areaMensagens.innerText = "CEP inválido! Por favor, digite um CEP válido";
   }
 });
 
 // Criar função para limpeza de campos
+function limparResultado(){
+  logradouro.innerText = "";
+    complemento.innerText = "";
+    bairro.innerText = "";
+    cidade.innerText = "";
+    uf.innerText = "";
+    estado.innerText = "";
+}
+
 
 // Criar função para área de transferência
