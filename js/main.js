@@ -46,12 +46,12 @@ formulario.addEventListener("submit", async (e) => {
     areaMensagens.innerText = "CEP localizado";
 
     // Exibe o endereço
-    logradouro.innerText = consulta.logradouro;
-    complemento.innerText = consulta.complemento;
-    bairro.innerText = consulta.bairro;
-    cidade.innerText = consulta.localidade;
-    uf.innerText = consulta.uf;
-    estado.innerText = consulta.estado;
+    logradouro.innerText = dadosCEP.logradouro;
+    complemento.innerText = dadosCEP.complemento;
+    bairro.innerText = dadosCEP.bairro;
+    cidade.innerText = dadosCEP.localidade;
+    uf.innerText = dadosCEP.uf;
+    estado.innerText = dadosCEP.estado;
   } else {
     console.log("Entrada inválida");
     inputCEP.value = "";
